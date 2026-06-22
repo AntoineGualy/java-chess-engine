@@ -3,7 +3,6 @@ package com.chess.engine.board;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import com.chess.engine.pieces.Piece;
 
 public abstract class Tile {
