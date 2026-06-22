@@ -15,7 +15,8 @@ public abstract class Tile {
     
     // This method checks if the tile is Occupied 
     public abstract boolean isTileOccupied();
-
+    
+    // A Map stores data in key-value pairs. every key is unique and leads to an exact value 
     private static final Map<Integer, EmptyTile> EMPTY_TILES = createAllPossibleEmptyTiles(); 
 
     private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
@@ -23,14 +24,22 @@ public abstract class Tile {
         final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();
 
         for(int i = 0; i < 64; i++) {
+            // Format Map.put(key, value)
             emptyTileMap.put(i, new EmptyTile(i));
         }
         return Map.copyOf(emptyTileMap);
     }
-
+    
+    // ternary operator. shorter version of an if-else statement
     public static Tile createTile(final int tileCoordinate, final Piece piece) {
         return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_TILES.get(tileCoordinate);
     }
+    /* public static Tile createTile(final int tileCoordinate, final Piece piece) {
+    if (piece != null) {
+        return new OccupiedTile(tileCoordinate, piece);
+    } else {
+        return EMPTY_TILES.get(tileCoordinate);
+    }*/
 
 
     // This method checks for which peiece is on the square
