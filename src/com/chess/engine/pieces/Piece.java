@@ -17,6 +17,7 @@ public abstract class Piece {
         this.pieceAlliance = pieceAlliance;
     }
 
+    // Takes a given board and calculates the given legal Moves for each piece
     public abstract List<Move> calculateLegalMoves(final Board board);
 
     
