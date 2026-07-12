@@ -30,7 +30,7 @@ public class Knight extends Piece {
         for(final int currentCandidate : CANIDATE_MOVE_COORDINATES) {
             candidateDestinationCoordinate = piecePosition + currentCandidate;
 
-            if(candidateDestinationCoordinate >= 0 && candidateDestinationCoordinate < 64) {
+            if(isValidTileoordinate(candidateDestinationCoordinate)) {
                 // stores the locate on the board 
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
@@ -49,6 +49,10 @@ public class Knight extends Piece {
         }
         // I am not using java so I can't us the immutableList method. 
         return List.copyOf(legalMoves);
+    }
+
+    private boolean isValidTileoordinate(int coordinate) {
+        return coordinate >= 0 && coordinate < 64;
     }
 
 }
