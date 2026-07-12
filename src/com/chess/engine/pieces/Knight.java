@@ -29,10 +29,14 @@ public class Knight extends Piece {
         final List<Move> legalMoves = new ArrayList<>();
 
         // this loops through CANIDATE_MOVE_COORDINATES. and gives all the possible moves 
-        for(final int currentCandidate : CANIDATE_MOVE_COORDINATES) {
-            candidateDestinationCoordinate = piecePosition + currentCandidate;
+        for(final int currentCandidateOffset : CANIDATE_MOVE_COORDINATES) {
+            candidateDestinationCoordinate = piecePosition + currentCandidateOffset;
 
             if(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
+
+                if (isFirstColumnExclusion(this.piecePosition, currentCandidateOffset)) {
+                    continue;
+                }
                 // stores the locate on the board 
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
@@ -52,6 +56,13 @@ public class Knight extends Piece {
         // I am not using java so I can't us the immutableList method. 
         return List.copyOf(legalMoves);
     }
+
+    private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {
+        return BoardUtils.FIRST_COLUMN[currentPosition] && ((candidateOffset == -17) || (candidateOffset == -10) || 
+        (candidateOffset == 6) || (candidateOffset == 15));
+    }
+
+    
 
 
 }
