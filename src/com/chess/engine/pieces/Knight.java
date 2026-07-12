@@ -7,6 +7,8 @@ import com.chess.engine.Alliance;
 import com.chess.engine.board.Board;
 import com.chess.engine.board.Move;
 import com.chess.engine.board.Tile;
+import com.chess.engine.board.BoardUtils;
+
 
 public class Knight extends Piece {
 
@@ -30,7 +32,7 @@ public class Knight extends Piece {
         for(final int currentCandidate : CANIDATE_MOVE_COORDINATES) {
             candidateDestinationCoordinate = piecePosition + currentCandidate;
 
-            if(isValidTileoordinate(candidateDestinationCoordinate)) {
+            if(BoardUtils.isValidTileCoordinate(candidateDestinationCoordinate)) {
                 // stores the locate on the board 
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
@@ -51,8 +53,5 @@ public class Knight extends Piece {
         return List.copyOf(legalMoves);
     }
 
-    private boolean isValidTileoordinate(int coordinate) {
-        return coordinate >= 0 && coordinate < 64;
-    }
 
 }
