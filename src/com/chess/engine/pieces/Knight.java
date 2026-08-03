@@ -37,6 +37,10 @@ public class Knight extends Piece {
                 if (isFirstColumnExclusion(this.piecePosition, currentCandidateOffset)) {
                     continue;
                 }
+
+                if (isSecondColumnExclusion(this.piecePosition, currentCandidateOffset)) {
+                    continue;
+                }
                 // stores the locate on the board 
                 final Tile candidateDestinationTile = board.getTile(candidateDestinationCoordinate);
 
@@ -63,7 +67,7 @@ public class Knight extends Piece {
     }
 
     private static boolean isSecondColumnExclusion(final int currentPosition, final int candidateOffset) {
-        return BoardUtils.SECOND_COLUMN[currentPosition] && (( candidateOffset == -10) || candidateOffset == 6)
+        return BoardUtils.SECOND_COLUMN[currentPosition] && (( candidateOffset == -10) || candidateOffset == 6);
     }
 
     
